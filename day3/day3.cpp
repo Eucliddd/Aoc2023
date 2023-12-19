@@ -12,6 +12,7 @@ inline bool isSymbol(char c){
     return c!='.' && !isdigit(c);
 }
 
+
 int puzzle1(const array<string,dim>& map){
     int sum = 0;
     regex digitRegex("[0-9]+");
@@ -53,6 +54,20 @@ int puzzle1(const array<string,dim>& map){
         }
     }
     return sum;
+}
+
+int puzzle2(const array<string,dim>& map){
+    int sum = 0;
+    regex gearRegex("\*");
+    for(int k = 0; k < dim; k++){
+        auto& e = map[k];
+        auto words_begin = sregex_iterator(e.begin(), e.end(), gearRegex);
+        auto words_end = sregex_iterator();
+        for(auto i = words_begin; i != words_end; i++){
+            smatch match = *i;
+            
+        }
+    }
 }
 
 int main(){
