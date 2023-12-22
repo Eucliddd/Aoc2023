@@ -24,6 +24,7 @@ int puzzle1(){
     for(int i = 0; i < race_num; i++){
         ss2 >> distances[i];
     }
+    infile.close();
     int multiply = 1;
     for (int i=0; i<race_num; i++){
         double half_time = times[i]/2.0;
@@ -36,6 +37,7 @@ int puzzle1(){
         cout << left << " " << right << " " << count << endl;
         multiply *= count;
     }
+    
     return multiply;
 }
 
@@ -58,6 +60,7 @@ int puzzle2(){
     while(ss2 >> num){
         distances.append(to_string(num));
     }
+    infile.close();
     total_time = stoull(times);
     total_distance = stoull(distances);
     cout << total_time << " " << total_distance << endl;
@@ -68,6 +71,7 @@ int puzzle2(){
     int left_int = floor(left)+1;
     int right_int = ceil(right)-1;
     int count = right_int-left_int+1;
+
     return count;
 }
 
