@@ -8,13 +8,19 @@
 using namespace std;
 
 
-int puzzle1(const string& springs, const vector<int>& contiguous_group){
-    int n = springs.size();
-    int m = contiguous_group.size();
-    vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
+int64_t puzzle1(string& springs, const vector<int>& contiguous_group){
+    springs.insert(0, ".");
+    auto n = springs.size();
+    auto m = contiguous_group.size();
+    vector<vector<int64_t>> dp(n+1, vector<int64_t>(m+1, 0));
     dp[0][0] = 1;
     for (int i = 1; i <= m; i++) dp[0][i] = 0;
-    for (int i = 1; i <= n; i++) dp[i][0] = 1;
+    bool flag = false;
+    for (int i = 1; i <= n; i++) {
+        if (springs[i-1] == '#') flag = true;
+        if (flag) dp[i][0] = 0;
+        else dp[i][0] = 1;
+    }
     for(int i = 1; i <= n; i++){
         for(int j = 1; j <= m; j++){
             if(springs[i-1] == '.') dp[i][j] = dp[i-1][j];
@@ -42,18 +48,28 @@ int puzzle1(const string& springs, const vector<int>& contiguous_group){
             }
         }
     }
-    cout << dp[n][m] << endl;
+    // cout << dp[n][m] << endl;
     return dp[n][m];
+}
+
+int64_t puzzle2(const string& springs, const vector<int>& contiguous_group){
+    string s = springs;
+    vector<int> cg = contiguous_group;
+    for(int i = 0; i < 4; i++){
+        s.append("?"+springs);
+        for(auto e: contiguous_group) cg.push_back(e);
+    }
+    return puzzle1(s, cg);
 }
 
 int main(){
     ifstream input("input.txt");
     string line;
-    int result = 0;
+    int64_t result = 0;
     int lines = 0;
     while(getline(input, line)){
         string springs = line.substr(0, line.find(' '));
-        springs.insert(0, ".");
+        // springs.insert(0, ".");
         vector<int> contiguous_group;
         line.erase(0, line.find(' ')+1);
         while(line.find(',') != string::npos){
@@ -62,7 +78,7 @@ int main(){
         }
         contiguous_group.push_back(stoi(line));
         lines++;
-        result += puzzle1(springs, contiguous_group);
+        result += puzzle2(springs, contiguous_group);
     }
     cout << result << endl;
     return 0;
