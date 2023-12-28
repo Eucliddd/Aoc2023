@@ -103,19 +103,39 @@ void DFS(grid& g, int x, int y, int step, int dist, array<bitset<cols>,rows>& vi
         int next_y = y + _next[i][1];
         if(next_x >= 0 && next_x < rows && next_y >= 0 && next_y < cols && !visited[next_x][next_y]){
             // TODO: check if the path is contiguous
+            if(step >= 3){
+                int prev_x = path[step-2] / cols;
+                int prev_y = path[step-2] % cols;
+                int prev_prev_x = path[step-3] / cols;
+                int prev_prev_y = path[step-3] % cols;
+                if(next_x == x && x == prev_x && prev_x == prev_prev_x){
+                    if (step >= 4 && prev_prev_x == path[step-4] / cols)
+                        continue;
+                }
+                if(next_y == y && y == prev_y && prev_y == prev_prev_y){
+                    if (step >= 4 && prev_prev_y == path[step-4] % cols)
+                        continue;
+                }
+            }
             visited[next_x][next_y] = 1;
-            if(step >= path.size()) path.resize(step + 1);
             path[step] = next_x * cols + next_y;
             DFS(g, next_x, next_y, step + 1, dist + g[next_x][next_y], visited, path, min_dist);
             visited[next_x][next_y] = 0;
         }
     }
+    return;
 }
 
 int puzzle1(grid& g){
     // cannot use dijkstra, because it doesn't satisfy the optimal substructure property due to the restriction on the straight line
     // so we use DFS instead
-
+    array<bitset<cols>,rows> visited;
+    vector<int> path(rows * cols);
+    int min_dist = INT_MAX;
+    visited[0][0] = 1;
+    path[0] = 0;
+    DFS(g, 0, 0, 1, 0, visited, path, min_dist);
+    return min_dist;
 }
 
 int main(){
