@@ -2,7 +2,7 @@
 - **VERY EASY**: day1, day2, day4, day6, day9, day11, day20
 - **EASY**: day3, day7, day13, day16, day18, day19
 - **MEDIUM**: day5, day8, day10, day12, day14, day17
-- **HARD**: 
+- **HARD**: day21
 
 ## day5
 ### part1
@@ -77,3 +77,9 @@ part1的DP写出来之后，直接用到part2就行。
 
 ### part2
 改一下part1里的更新条件，保证连续长度在4以上，需要注意由于不能只在直线上走小于4格就停下，所以每次前进的步数为4或1（连续长度已经超过4）.
+
+## day21
+### part1
+BFS模拟
+### part2
+不会写，摆烂了
