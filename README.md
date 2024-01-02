@@ -1,6 +1,6 @@
 # AOC2023游戏记录
 - **VERY EASY**: day1, day2, day4, day6, day9, day11
-- **EASY**: day3, day7, day13, day16, day18
+- **EASY**: day3, day7, day13, day16, day18, day19
 - **MEDIUM**: day5, day8, day10, day12, day14, day17
 - **HARD**: 
 
