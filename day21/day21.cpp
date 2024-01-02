@@ -219,6 +219,6 @@ int main(){
     file.close();
     
     // test();
-    cout << puzzle2() << endl;
+    cout << puzzle1() << endl;
     return 0;
 }
