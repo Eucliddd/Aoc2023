@@ -1,7 +1,7 @@
 # AOC2023游戏记录
 - **VERY EASY**: day1, day2, day4, day6, day9, day11, day20
 - **EASY**: day3, day7, day13, day16, day18, day19, day22
-- **MEDIUM**: day5, day8, day10, day12, day14, day17
+- **MEDIUM**: day5, day8, day10, day12, day14, day17, day23
 - **HARD**: day21
 
 ## day5
@@ -83,3 +83,11 @@ part1的DP写出来之后，直接用到part2就行。
 BFS模拟
 ### part2
 不会写，摆烂了
+
+## day23
+### part1
+DFS回溯法暴力
+### part2
+用DFS回溯法暴力算了2分钟，感觉收敛了，提交之后AC了
+
+问题本身是NP-Hard，应该有贪心+概率的算法或者启发式算法可以逼近，但是想不出来了
