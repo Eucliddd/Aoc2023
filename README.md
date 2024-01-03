@@ -1,6 +1,6 @@
 # AOC2023游戏记录
 - **VERY EASY**: day1, day2, day4, day6, day9, day11, day20
-- **EASY**: day3, day7, day13, day16, day18, day19, day22
+- **EASY**: day3, day7, day13, day16, day18, day19, day22, day24
 - **MEDIUM**: day5, day8, day10, day12, day14, day17, day23
 - **HARD**: day21
 
@@ -91,3 +91,12 @@ DFS回溯法暴力
 用DFS回溯法暴力算了2分钟，感觉收敛了，提交之后AC了
 
 问题本身是NP-Hard，应该有贪心+概率的算法或者启发式算法可以逼近，但是想不出来了
+
+## day24
+### part1
+二维平面上求出所有交点，然后判断一下是否在过去的路径上就行了
+### part2
+选三个冰雹，然后设它们分别经过$t_1$,$t_2$,$t_3$时间后位于同一直线上，然后列出方程：
+$$(t_1-t_2)\vec{R_3}(t_3) + (t_2-t_3)\vec{R_1}(t_1) + (t_3-t_1)\vec{R_2}(t_2)=\vec{0}$$
+
+发现是三元二次方程，用python的sympy库解出$(t_1,t_2,t_3)$，然后倒推出石子的速度$\vec{V}$，最后求出石子的初始位置$\vec{R_0}$。
