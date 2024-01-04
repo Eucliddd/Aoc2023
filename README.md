@@ -1,7 +1,7 @@
 # AOC2023游戏记录
 - **VERY EASY**: day1, day2, day4, day6, day9, day11, day20
 - **EASY**: day3, day7, day13, day16, day18, day19, day22, day24
-- **MEDIUM**: day5, day8, day10, day12, day14, day17, day23
+- **MEDIUM**: day5, day8, day10, day12, day14, day17, day23, day25
 - **HARD**: day21
 
 ## day5
@@ -100,3 +100,9 @@ DFS回溯法暴力
 $$(t_1-t_2)\vec{R_3}(t_3) + (t_2-t_3)\vec{R_1}(t_1) + (t_3-t_1)\vec{R_2}(t_2)=\vec{0}$$
 
 发现是三元二次方程，用python的sympy库解出$(t_1,t_2,t_3)$，然后倒推出石子的速度$\vec{V}$，最后求出石子的初始位置$\vec{R_0}$。
+
+## day25
+### part1
+求无向图无源最小割，和两个连通图的顶点数，一开始抄了stoer-wanger算法，但是不知道怎么直接得出两个连通图的顶点数，感觉还要再跑两次dfs。
+
+然后注意到题目给的图是无权图，且最小割已经给定，可以用karger算法，当求得的最小割为3时停止，且两个连通图的顶点数明显是合并到最后两个未合并的顶点上的顶点数，于是直接计算即可。
